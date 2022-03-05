@@ -1,10 +1,10 @@
 source ~/.config/nvim/vim-plug/plugins.vim
-syntax enable
-syntax on
+" syntax enable
+" syntax on
 set history=200
 set encoding=utf-8
 set smarttab
-set hlsearch
+" set hlsearch
 set ignorecase
 set wildmenu
 set wildmode=full
@@ -29,10 +29,26 @@ inoremap jj <Esc>
 
 
 " color setting
-colorscheme solarized8
-set termguicolors
+set background=light
+colorscheme solarized
+" set termguicolors
+" python
+let g:python_highlight_all = 1
 
-nnoremap <silent> <D-G> :call CompileRunGcc()<CR>
+" Return to last edit position when opening files (You want this!)
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
+
+
+" Rainbow
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+nnoremap <silent> <c-G> :call CompileRunGcc()<CR>
 func! CompileRunGcc()
    exec "w"
    if &filetype == 'c'

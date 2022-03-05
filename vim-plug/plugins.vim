@@ -35,7 +35,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dylanaraps/wal'
 Plug 'morhetz/gruvbox'
 Plug 'crusoexia/vim-monokai'
-Plug 'lifepillar/vim-solarized8'
+" Plug 'lifepillar/vim-solarized8'
+Plug 'altercation/vim-colors-solarized'
 Plug 'vim-python/python-syntax'
 Plug 'airblade/vim-gitgutter'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
