@@ -1,5 +1,5 @@
 {
-	"snippets.userSnippetsDirectory": "/Users/circle/.config/nvim/my_snippets/tex.snippets",
+	"snippets.userSnippetsDirectory": "/Users/circle/.config/nvim/my_snippets/",
 	"languageserver": {
         "ccls": {
             "command": "ccls",

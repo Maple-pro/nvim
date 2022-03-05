@@ -10,7 +10,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
 " Better Syntax Support
 " Plug 'sheerun/vim-polyglot'
-" Plug 'preservim/nerdtree'
+Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
 Plug 'itchyny/lightline.vim'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
@@ -18,6 +18,7 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
 Plug 'Chiel92/vim-autoformat'
+Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-commentary'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'lervag/vimtex'
