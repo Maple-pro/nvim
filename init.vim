@@ -37,9 +37,9 @@ let g:python_highlight_all = 1
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
-     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-     \   exe "normal! g`\"" |
-     \ endif
+		 \ if line("'\"") > 0 && line("'\"") <= line("$") |
+		 \   exe "normal! g`\"" |
+		 \ endif
 
 
 " Rainbow
@@ -73,31 +73,31 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+		 \ pumvisible() ? coc#_select_confirm() :
+		 \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+		 \ <SID>check_back_space() ? "\<TAB>" :
+		 \ coc#refresh()
 
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+   let col = col('.') - 1
+   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 let g:coc_snippet_next = '<tab>'
 
 function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
+   if (index(['vim','help'], &filetype) >= 0)
+	  execute 'h '.expand('<cword>')
+   elseif (coc#rpc#ready())
+	  call CocActionAsync('doHover')
+   else
+	  execute '!' . &keywordprg . " " . expand('<cword>')
+   endif
 endfunction
 
 
 " auto format
-au BufWrite *.py,*.cpp,*.tex,*.c :Autoformat
+au BufWrite *.f90,*.py,*.cpp,*.tex,*.c :Autoformat
 
 
 " chadtree
@@ -105,6 +105,36 @@ nnoremap <leader>v <cmd>CHADopen<cr>
 let g:chadtree_settings = {'view.width' : 25, 'keymap.tertiary' : ["<c-s>"], 
 		 \ 'theme.text_colour_set' : "solarized_universal",
 		 \ 'theme.icon_colour_set' : "github"}
+
+" git
+set updatetime=100
+
+
+" latex
+let g:vimtex_view_method = 'skim'
+" let g:vimtex_view_general_viewer = 'okular'
+let g:vimtex_quickfix_open_on_warning=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
+
+
+" easy motion
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+nmap s <Plug>(easymotion-overwin-f)
+" or
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Turn on case-insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
 
 
 " 自动运行程序
