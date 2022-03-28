@@ -97,7 +97,9 @@ endfunction
 
 
 " auto format
-au BufWrite *.f90,*.py,*.cpp,*.tex,*.c :Autoformat
+let g:formatdef_my_custom_m = '"mh_style --fix *.m"'
+let g:formatters_m = ['my_custom_m']
+au BufWrite *.f90,*.py,*.cpp,*.tex,*.c,*.m :Autoformat
 
 
 " chadtree
@@ -110,12 +112,21 @@ let g:chadtree_settings = {'view.width' : 25, 'keymap.tertiary' : ["<c-s>"],
 set updatetime=100
 
 
+" fzf
+map <leader>g :Rg<CR>
+map <leader>f :Files<CR>
+
+let g:airline_section_y = ''
+
 " latex
 let g:vimtex_view_method = 'skim'
 " let g:vimtex_view_general_viewer = 'okular'
 let g:vimtex_quickfix_open_on_warning=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
+
+let g:livepreview_previewer = 'open -a Skim'
+let g:livepreview_engine = 'xelatex'
 
 
 " easy motion
