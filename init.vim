@@ -25,7 +25,7 @@ set tabstop=4
 set shiftwidth=3
 set autoindent
 set ai
-inoremap jj <Esc> 
+inoremap jj <Esc>
 
 
 " color setting
@@ -40,6 +40,10 @@ autocmd BufReadPost *
 		 \ if line("'\"") > 0 && line("'\"") <= line("$") |
 		 \   exe "normal! g`\"" |
 		 \ endif
+
+
+" autocomplete
+set dictionary+=/usr/share/dict/words
 
 
 " Rainbow
@@ -69,7 +73,7 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 xmap <leader>x  <Plug>(coc-convert-snippet)
 
 " Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+" nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 
 inoremap <silent><expr> <TAB>
@@ -99,7 +103,14 @@ endfunction
 " auto format
 let g:formatdef_my_custom_m = '"mh_style --fix *.m"'
 let g:formatters_m = ['my_custom_m']
+let g:python3_host_prog="/Users/circle/opt/anaconda3/bin/python"
 au BufWrite *.f90,*.py,*.cpp,*.tex,*.c,*.m :Autoformat
+
+
+" 删除不复制
+nnoremap <leader>d "_d
+xnoremap <leader>d "_d
+xnoremap <leader>p "_dP
 
 
 " chadtree
@@ -176,7 +187,4 @@ func! CompileRunGcc()
    endif
 endfunc
 
-" coc
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
 
