@@ -1,25 +1,17 @@
-" auto-install vim-plug
-if empty(glob('~/.config/nvim/autoload/plug.vim'))
-   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-			\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-   "autocmd VimEnter * PlugInstall
-   "autocmd VimEnter * PlugInstall | source $MYVIMRC
-endif
-
 call plug#begin('~/.config/nvim/autoload/plugged')
-
 " Better Syntax Support
 " Plug 'sheerun/vim-polyglot'
 Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
 Plug 'itchyny/lightline.vim'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-" Plug 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
 Plug 'Chiel92/vim-autoformat'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-commentary'
+Plug 'mileszs/ack.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'lervag/vimtex'
 Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'} " for VimPlug
@@ -32,21 +24,21 @@ Plug 'mhinz/vim-startify'
 Plug 'lfv89/vim-interestingwords'
 Plug 'tpope/vim-fugitive'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'MortenStabenau/matlab-vim'
+" Plug 'MortenStabenau/matlab-vim'
 Plug 'morhetz/gruvbox'
 Plug 'altercation/vim-colors-solarized'
 Plug 'vim-python/python-syntax'
 Plug 'airblade/vim-gitgutter'
+Plug 'overcache/NeoSolarized'
+Plug 'nburns/vim-auto-light-dark'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'majutsushi/tagbar' "tags
+" Plug 'MortenStabenau/matlab-vim'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-Plug 'luukvbaal/nnn.nvim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'obxhdx/vim-auto-highlight'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
-lua << EOF
-require("nnn").setup()
-EOF

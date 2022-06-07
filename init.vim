@@ -1,11 +1,16 @@
-source ~/.config/nvim/vim-plug/plugins.vim
+source ~/.config/nvim/plugins.vim
 " syntax enable
 " syntax on
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+set fileencoding=utf-8
+set encoding=utf-8
 set history=200
 set encoding=utf-8
 set smarttab
 " set hlsearch
 set ignorecase
+set autoread
+set smartcase
 set wildmenu
 set wildmode=full
 set mouse=a
@@ -29,8 +34,9 @@ inoremap jj <Esc>
 
 
 " color setting
-set background=light
-colorscheme solarized
+" set background=dark
+" colorscheme Neosolarized
+colorscheme gruvbox
 " set termguicolors
 " python
 let g:python_highlight_all = 1
@@ -101,10 +107,11 @@ endfunction
 
 
 " auto format
-let g:formatdef_my_custom_m = '"mh_style --fix *.m"'
-let g:formatters_m = ['my_custom_m']
+let g:formatdef_cuda = '"clang-format --style=microsoft"'
+let g:formatters_cuda = ['cuda']
 let g:python3_host_prog="/Users/circle/opt/anaconda3/bin/python"
-au BufWrite *.f90,*.py,*.cpp,*.tex,*.c,*.m :Autoformat
+au BufWrite *.f90,*.py,*.cpp,*.tex,*.c,*.cs,*.cu,*.m,*.json :Autoformat
+" let g:autoformat_verbosemode=1
 
 
 " 删除不复制
@@ -126,6 +133,7 @@ set updatetime=100
 " fzf
 map <leader>g :Rg<CR>
 map <leader>f :Files<CR>
+map <leader>b :Buffers<CR>
 
 let g:airline_section_y = ''
 
@@ -188,3 +196,31 @@ func! CompileRunGcc()
 endfunc
 
 
+function DarkMode()
+    " colorscheme solarized8_high
+    set background=dark
+    " let g:lightline = { 'colorscheme': 'solarized' }
+endfunction
+
+function LightMode()
+    " colorscheme bbedit
+    set background=light
+    " let g:lightline = { 'colorscheme': 'PaperColor' }
+endfunction
+
+" 颜色设置
+"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+if (empty($TMUX))
+  if (has("nvim"))
+    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
