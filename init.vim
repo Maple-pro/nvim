@@ -35,9 +35,13 @@ inoremap jj <Esc>
 
 " color setting
 " set background=dark
+set termguicolors
+colorscheme monokai_pro
+let g:lightline = {
+      \ 'colorscheme': 'monokai_pro',
+      \ }
 " colorscheme Neosolarized
-colorscheme gruvbox
-" set termguicolors
+" colorscheme gruvbox
 " python
 let g:python_highlight_all = 1
 
@@ -109,9 +113,12 @@ endfunction
 " auto format
 let g:formatdef_cuda = '"clang-format --style=microsoft"'
 let g:formatters_cuda = ['cuda']
+let g:formatdef_matlab = '"mh_style --fix"'
+let g:formatters_matlab = ['matlab']
 let g:python3_host_prog="/Users/circle/opt/anaconda3/bin/python"
-au BufWrite *.f90,*.py,*.cpp,*.tex,*.c,*.cs,*.cu,*.m,*.json :Autoformat
-" let g:autoformat_verbosemode=1
+au BufWrite *.f90,*.py,*.cpp,*.tex,*.c,*.cs,*.cu,*.json :Autoformat
+au VimLeave *.m :Autoformat
+let g:autoformat_verbosemode=1
 
 
 " 删除不复制
@@ -204,7 +211,7 @@ endfunction
 
 function LightMode()
     " colorscheme bbedit
-    set background=light
+    set background=dark
     " let g:lightline = { 'colorscheme': 'PaperColor' }
 endfunction
 
@@ -224,3 +231,15 @@ if (empty($TMUX))
     set termguicolors
   endif
 endif
+
+
+" minimap
+let g:minimap_width = 10
+let g:minimap_auto_start = 1
+let g:minimap_auto_start_win_enter = 1
+let g:minimap_highlight_range = 1
+let g:minimap_git_colors = 1
+let g:minimap_highlight_search = 1
+autocmd ColorScheme *
+        \ highlight minimapCursor            ctermbg=59  ctermfg=228 guibg=#5F5F5F guifg=#FFFF87 |
+        \ highlight minimapRange             ctermbg=242 ctermfg=228 guibg=#4F4F4F guifg=#FFFF87
