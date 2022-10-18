@@ -36,7 +36,7 @@ inoremap jj <Esc>
 " color setting
 " set background=dark
 set termguicolors
-colorscheme monokai_pro
+colorscheme tender
 let g:lightline = {
       \ 'colorscheme': 'monokai_pro',
       \ }
@@ -117,8 +117,9 @@ let g:formatdef_matlab = '"mh_style --fix"'
 let g:formatters_matlab = ['matlab']
 let g:python3_host_prog="/Users/circle/opt/anaconda3/bin/python"
 au BufWrite *.f90,*.py,*.cpp,*.tex,*.c,*.cs,*.cu,*.json :Autoformat
-au VimLeave *.m :Autoformat
-let g:autoformat_verbosemode=1
+" autocmd BufWinLeave  *.m :!mh_style --fix --tab_width 3 *.m> /dev/null 2>&1
+" let g:autoformat_verbosemode=1
+map <Leader>m :!mh_style --fix --tab_width 3 *.m> /dev/null 2>&1<CR><CR>
 
 
 " 删除不复制
@@ -146,13 +147,16 @@ let g:airline_section_y = ''
 
 " latex
 let g:vimtex_view_method = 'skim'
+let g:vimtex_view_general_viewer = 'skim'
 " let g:vimtex_view_general_viewer = 'okular'
+" let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 let g:vimtex_quickfix_open_on_warning=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
+let g:vimtex_compiler_progname='/usr/local/bin/nvr'
 
-let g:livepreview_previewer = 'open -a Skim'
-let g:livepreview_engine = 'xelatex'
+" let g:livepreview_previewer = 'open -a Skim'
+" let g:livepreview_engine = 'xelatex'
 
 
 " easy motion
@@ -234,12 +238,13 @@ endif
 
 
 " minimap
-let g:minimap_width = 10
-let g:minimap_auto_start = 1
-let g:minimap_auto_start_win_enter = 1
-let g:minimap_highlight_range = 1
-let g:minimap_git_colors = 1
-let g:minimap_highlight_search = 1
-autocmd ColorScheme *
-        \ highlight minimapCursor            ctermbg=59  ctermfg=228 guibg=#5F5F5F guifg=#FFFF87 |
-        \ highlight minimapRange             ctermbg=242 ctermfg=228 guibg=#4F4F4F guifg=#FFFF87
+" let g:minimap_width = 10
+" let g:minimap_auto_start = 1
+" let g:minimap_auto_start_win_enter = 1
+" let g:minimap_highlight_range = 1
+" " let g:minimap_git_colors = 1
+" let g:minimap_highlight_search = 1
+" let g:minimap_block_filetypes = ['fugitive', 'nerdtree', 'tagbar', 'fzf', 'chadtree' ]
+" autocmd ColorScheme *
+"         \ highlight minimapCursor            ctermbg=59  ctermfg=228 guibg=#5F5F5F guifg=#FFFF87 |
+"         \ highlight minimapRange             ctermbg=242 ctermfg=228 guibg=#4F4F4F guifg=#FFFF87

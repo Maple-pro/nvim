@@ -21,6 +21,7 @@ Plug 'kien/rainbow_parentheses.vim'
 " Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
 Plug 'mhinz/vim-startify'
+Plug 'jacoborus/tender.vim'
 Plug 'lfv89/vim-interestingwords'
 Plug 'tpope/vim-fugitive'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -34,9 +35,8 @@ Plug 'vim-python/python-syntax'
 Plug 'airblade/vim-gitgutter'
 Plug 'overcache/NeoSolarized'
 Plug 'nburns/vim-auto-light-dark'
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+" Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'majutsushi/tagbar' "tags
-" Plug 'MortenStabenau/matlab-vim'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
