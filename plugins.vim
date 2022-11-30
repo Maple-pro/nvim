@@ -25,7 +25,7 @@ Plug 'jacoborus/tender.vim'
 Plug 'lfv89/vim-interestingwords'
 Plug 'tpope/vim-fugitive'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'MortenStabenau/matlab-vim'
+Plug 'circlelq/matlab-vim'
 Plug 'patstockwell/vim-monokai-tasty'
 Plug 'wfxr/minimap.vim'
 Plug 'phanviet/vim-monokai-pro'
@@ -34,6 +34,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'vim-python/python-syntax'
 Plug 'airblade/vim-gitgutter'
 Plug 'overcache/NeoSolarized'
+Plug 'dyng/ctrlsf.vim'
 Plug 'nburns/vim-auto-light-dark'
 " Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'majutsushi/tagbar' "tags

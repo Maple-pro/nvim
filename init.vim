@@ -109,6 +109,9 @@ function! s:show_documentation()
    endif
 endfunction
 
+let g:matlab_auto_start=0
+
+let b:ale_linters = {'fortran': ['language_server']}
 
 " auto format
 let g:formatdef_cuda = '"clang-format --style=microsoft"'
@@ -187,6 +190,9 @@ func! CompileRunGcc()
 	  exec "!time ./%<"
    elseif &filetype == 'cpp'
 	  exec "!g++ % -o %<"
+	  exec "!time ./%<"
+   elseif &filetype == 'fortran'
+	  exec "!gfortran % -o %<"
 	  exec "!time ./%<"
    elseif &filetype == 'java'
 	  exec "!javac %"
