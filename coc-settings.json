@@ -1,37 +1,18 @@
 {
-	"snippets.userSnippetsDirectory": "/Users/circle/.config/nvim/my_snippets/",
-	"languageserver": {
-		"fortran": {
-			"command": "fortls",
-			"args": [
-				"--lowercase_intrinsics",
-				"--hover_signature",
-				"--hover_language=fortran",
-				"--use_signature_help"
-			],
-			"filetypes": ["fortran"],
-			"rootPatterns": [".fortls", ".git/"]
-		},
-		"ccls": {
-			"command": "ccls",
-			"filetypes": [
-				"c",
-				"cpp",
-				"objc",
-				"objcpp"
-			],
-			"rootPatterns": [
-				".ccls",
-				"compile_commands.json",
-				".vim/",
-				".git/",
-				".hg/"
-			],
-			"initializationOptions": {
-				"cache": {
-					"directory": "/tmp/ccls"
-				}
-			}
-		}
-	}
+   "snippets.userSnippetsDirectory": "C:/Users/17199/AppData/Local/nvim/my_snippets/",
+   "languageserver": {
+	  "fortran": {
+		 "command": "fortls",
+		 "args": [
+			"--lowercase_intrinsics",
+			"--hover_signature",
+			"--hover_language=fortran",
+			"--use_signature_help"
+		 ],
+		 "filetypes": ["fortran"],
+		 "rootPatterns": [".fortls", ".git/"]
+	  }
+   },
+  "snippets.ultisnips.pythonPrompt": false,
+  "clangd.path": "~\\AppData\\Local\\coc\\extensions\\coc-clangd-data\\install\\15.0.6\\clangd_15.0.6\\bin\\clangd.exe"
 }

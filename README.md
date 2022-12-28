@@ -1,3 +1,5 @@
 # nvim config
 
-circle 的 nvim 配置文件。
+Maples 的 nvim 配置文件。
+
+> Forked from circlelq: https://github.com/circlelq/nvim

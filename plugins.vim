@@ -1,8 +1,9 @@
-call plug#begin('~/.config/nvim/autoload/plugged')
+call plug#begin('~/AppData/Local/nvim-data/site/autoload/plugged')
+let g:plug_url_format = 'git@github.com:%s.git'
 " Better Syntax Support
 " Plug 'sheerun/vim-polyglot'
-Plug 'preservim/nerdtree'
-Plug 'preservim/nerdcommenter'
+" Plug 'preservim/nerdtree'
+" Plug 'preservim/nerdcommenter'
 Plug 'itchyny/lightline.vim'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'jiangmiao/auto-pairs'
@@ -11,10 +12,10 @@ Plug 'tpope/vim-surround'
 Plug 'Chiel92/vim-autoformat'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-commentary'
-Plug 'mileszs/ack.vim'
+" Plug 'mileszs/ack.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'lervag/vimtex'
-Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'} " for VimPlug
+" Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'} " for VimPlug
 Plug 'honza/vim-snippets'
 Plug 'dense-analysis/ale'
 Plug 'kien/rainbow_parentheses.vim'
@@ -25,22 +26,23 @@ Plug 'jacoborus/tender.vim'
 Plug 'lfv89/vim-interestingwords'
 Plug 'tpope/vim-fugitive'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'circlelq/matlab-vim'
+" Plug 'circlelq/matlab-vim'
 Plug 'patstockwell/vim-monokai-tasty'
-Plug 'wfxr/minimap.vim'
+" Plug 'wfxr/minimap.vim'
 Plug 'phanviet/vim-monokai-pro'
 Plug 'morhetz/gruvbox'
 Plug 'altercation/vim-colors-solarized'
 Plug 'vim-python/python-syntax'
 Plug 'airblade/vim-gitgutter'
 Plug 'overcache/NeoSolarized'
-Plug 'dyng/ctrlsf.vim'
+" Plug 'dyng/ctrlsf.vim'
 Plug 'nburns/vim-auto-light-dark'
 " Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
-Plug 'majutsushi/tagbar' "tags
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" Plug 'majutsushi/tagbar' "tags
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+" Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'obxhdx/vim-auto-highlight'

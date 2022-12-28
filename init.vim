@@ -1,4 +1,4 @@
-source ~/.config/nvim/plugins.vim
+source ~/AppData/Local/nvim/plugins.vim
 " syntax enable
 " syntax on
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
@@ -18,7 +18,8 @@ set complete-=i
 set backspace=2
 set nu
 set nocompatible
-set relativenumber
+" set relativenumber
+set number
 set backspace=indent,eol,start
 set incsearch
 nnoremap k gk
@@ -31,6 +32,7 @@ set shiftwidth=3
 set autoindent
 set ai
 inoremap jj <Esc>
+" set shell=pwsh
 
 
 " color setting
@@ -53,7 +55,7 @@ autocmd BufReadPost *
 
 
 " autocomplete
-set dictionary+=/usr/share/dict/words
+" set dictionary+=/usr/share/dict/words
 
 
 " Rainbow
@@ -109,16 +111,16 @@ function! s:show_documentation()
    endif
 endfunction
 
-let g:matlab_auto_start=0
+" let g:matlab_auto_start=0
 
 let b:ale_linters = {'fortran': ['language_server']}
 
 " auto format
-let g:formatdef_cuda = '"clang-format --style=microsoft"'
-let g:formatters_cuda = ['cuda']
-let g:formatdef_matlab = '"mh_style --fix"'
-let g:formatters_matlab = ['matlab']
-let g:python3_host_prog="/Users/circle/opt/anaconda3/bin/python"
+" let g:formatdef_cuda = '"clang-format --style=microsoft"'
+" let g:formatters_cuda = ['cuda']
+" let g:formatdef_matlab = '"mh_style --fix"'
+" let g:formatters_matlab = ['matlab']
+let g:python3_host_prog="D:/17199/Documents/anaconda3/python.exe"
 au BufWrite *.f90,*.py,*.cpp,*.tex,*.c,*.cs,*.cu,*.json :Autoformat
 " autocmd BufWinLeave  *.m :!mh_style --fix --tab_width 3 *.m> /dev/null 2>&1
 " let g:autoformat_verbosemode=1
@@ -149,14 +151,17 @@ map <leader>b :Buffers<CR>
 let g:airline_section_y = ''
 
 " latex
-let g:vimtex_view_method = 'skim'
-let g:vimtex_view_general_viewer = 'skim'
+" let g:vimtex_view_method = 'C:\Users\17199\AppData\Local\SumatraPDF'
+let g:vimtex_view_general_viewer = 'SumatraPDF'
 " let g:vimtex_view_general_viewer = 'okular'
 " let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+" 阅读器的相关配置
+let g:vimtex_view_general_options
+\ = '-reuse-instance -forward-search @tex @line @pdf'
 let g:vimtex_quickfix_open_on_warning=0
-set conceallevel=1
-let g:tex_conceal='abdmg'
-let g:vimtex_compiler_progname='/usr/local/bin/nvr'
+" set conceallevel=1
+" let g:tex_conceal='abdmg'
+" let g:vimtex_compiler_progname='/usr/local/bin/nvr'
 
 " let g:livepreview_previewer = 'open -a Skim'
 " let g:livepreview_engine = 'xelatex'
@@ -182,7 +187,7 @@ map <Leader>k <Plug>(easymotion-k)
 
 
 " 自动运行程序
-nnoremap <silent> <c-G> :call CompileRunGcc()<CR>
+" nnoremap <silent> <c-G> :call CompileRunGcc()<CR>
 func! CompileRunGcc()
    exec "w"
    if &filetype == 'c'
@@ -254,3 +259,42 @@ endif
 " autocmd ColorScheme *
 "         \ highlight minimapCursor            ctermbg=59  ctermfg=228 guibg=#5F5F5F guifg=#FFFF87 |
 "         \ highlight minimapRange             ctermbg=242 ctermfg=228 guibg=#4F4F4F guifg=#FFFF87
+
+
+" vim-gutentags
+" Don't load me if there's no ctags file
+if !executable('ctags')
+    let g:gutentags_dont_load = 1
+endif
+
+
+" terminal mode key map
+tnoremap <leader><Esc> <C-\><C-n>
+nnoremap <silent> <leader>t :call OpenPwshInSplitView()<CR>
+
+function OpenPwshInSplitView()
+   let bufcount = bufnr("$")
+   let currbufnr = 1
+   let firstmatchingbufnr = 0
+   while currbufnr <= bufcount
+	  let currbufnr = currbufnr + 1
+	  if(bufexists(currbufnr))
+		 if(matchstr(bufname(currbufnr), "term://") != "")
+			let firstmatchingbufnr = currbufnr
+			break
+		 endif
+	  endif
+   endwhile
+
+   if(firstmatchingbufnr == 0)
+	  execute "sp"
+	  execute "wincmd j"
+	  execute "terminal pwsh"
+   else
+	  execute "sp"
+	  execute "wincmd j"
+	  execute "e #" . firstmatchingbufnr
+   endif
+
+endfunction
+
