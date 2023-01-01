@@ -37,6 +37,7 @@ set updatetime=100
 set foldenable
 " }}}
 
+
 " {{{ Theme Setting
 " set background=dark
 set termguicolors
