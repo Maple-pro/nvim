@@ -1,4 +1,7 @@
 source ~/AppData/Local/nvim/plugins.vim
+
+" {{{ UI Setting
+
 " syntax enable
 " syntax on
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
@@ -22,20 +25,19 @@ set nocompatible
 set number
 set backspace=indent,eol,start
 set incsearch
-nnoremap k gk
-nnoremap gk k
-nnoremap j gj
-nnoremap gk k
 set clipboard=unnamed
 set tabstop=4
-set shiftwidth=3
+set shiftwidth=4
 set autoindent
 set ai
 inoremap jj <Esc>
 " set shell=pwsh
+set foldmethod=marker
+set updatetime=100
+set foldenable
+" }}}
 
-
-" color setting
+" {{{ Theme Setting
 " set background=dark
 set termguicolors
 colorscheme tender
@@ -44,28 +46,18 @@ let g:lightline = {
       \ }
 " colorscheme Neosolarized
 " colorscheme gruvbox
-" python
-let g:python_highlight_all = 1
-
-" Return to last edit position when opening files (You want this!)
-autocmd BufReadPost *
-		 \ if line("'\"") > 0 && line("'\"") <= line("$") |
-		 \   exe "normal! g`\"" |
-		 \ endif
+" }}}
 
 
-" autocomplete
-" set dictionary+=/usr/share/dict/words
-
-
-" Rainbow
+" {{{ Rainbow
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+" }}}
 
 
-" coc
+" {{{ coc-snippets
 " Use <C-l> for trigger snippet expand.
 imap <C-l> <Plug>(coc-snippets-expand)
 
@@ -87,19 +79,36 @@ xmap <leader>x  <Plug>(coc-convert-snippet)
 " Use K to show documentation in preview window.
 " nnoremap <silent> K :call <SID>show_documentation()<CR>
 
+" inoremap <silent><expr> <TAB>
+" 		 \ pumvisible() ? coc#_select_confirm() :
+" 		 \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+" 		 \ <SID>check_back_space() ? "\<TAB>" :
+" 		 \ coc#refresh()
 
+""" }}}
+
+
+" {{{ coc.nvim
 inoremap <silent><expr> <TAB>
-		 \ pumvisible() ? coc#_select_confirm() :
-		 \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-		 \ <SID>check_back_space() ? "\<TAB>" :
-		 \ coc#refresh()
+			\ pumvisible() ? coc#pum#next(1) :
+			\ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump', ''])\<CR>" :
+			\ CheckBackspace() ? "\<TAB>" :
+			\ coc#refresh()
 
-function! s:check_back_space() abort
+inoremap <silent><expr> <S-TAB> pumvisible() ? coc#pum#prev(1) : "\<C-h>"
+
+" Use <CR> to confirm completion, `<C-g>u` means break undo chain at current
+" position.
+" Coc only does snippet and additional edit on configm.
+" inoremap <silent><expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+function! CheckBackspace() abort
    let col = col('.') - 1
    return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 let g:coc_snippet_next = '<tab>'
+
 
 function! s:show_documentation()
    if (index(['vim','help'], &filetype) >= 0)
@@ -111,11 +120,12 @@ function! s:show_documentation()
    endif
 endfunction
 
-" let g:matlab_auto_start=0
+autocmd FileType python let b:coc_root_patterns = ['.git', '.env', 'venv', '.venv', 'setup.cfg', 'setup.py', 'pyproject.toml', 'pyrightconfig.json']
 
-let b:ale_linters = {'fortran': ['language_server']}
+" }}}
 
-" auto format
+
+" {{{ auto format
 " let g:formatdef_cuda = '"clang-format --style=microsoft"'
 " let g:formatters_cuda = ['cuda']
 " let g:formatdef_matlab = '"mh_style --fix"'
@@ -125,33 +135,26 @@ au BufWrite *.f90,*.py,*.cpp,*.tex,*.c,*.cs,*.cu,*.json :Autoformat
 " autocmd BufWinLeave  *.m :!mh_style --fix --tab_width 3 *.m> /dev/null 2>&1
 " let g:autoformat_verbosemode=1
 map <Leader>m :!mh_style --fix --tab_width 3 *.m> /dev/null 2>&1<CR><CR>
+" }}}
 
 
-" 删除不复制
-nnoremap <leader>d "_d
-xnoremap <leader>d "_d
-xnoremap <leader>p "_dP
-
-
-" chadtree
+" {{{ chadtree
 nnoremap <leader>v <cmd>CHADopen<cr>
 let g:chadtree_settings = {'view.width' : 25, 'keymap.tertiary' : ["<c-s>"], 
 		 \ 'theme.text_colour_set' : "solarized_universal",
 		 \ 'theme.icon_colour_set' : "github"}
-
-" git
-set updatetime=100
+" }}}
 
 
-" fzf
+" {{{ fzf
 map <leader>g :Rg<CR>
 map <leader>f :Files<CR>
 map <leader>b :Buffers<CR>
+" }}}
 
-let g:airline_section_y = ''
 
-" latex
-" let g:vimtex_view_method = 'C:\Users\17199\AppData\Local\SumatraPDF'
+" {{{ vim-tex
+let g:vimtex_view_method = 'C:\Users\17199\AppData\Local\SumatraPDF'
 let g:vimtex_view_general_viewer = 'SumatraPDF'
 " let g:vimtex_view_general_viewer = 'okular'
 " let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
@@ -165,9 +168,10 @@ let g:vimtex_quickfix_open_on_warning=0
 
 " let g:livepreview_previewer = 'open -a Skim'
 " let g:livepreview_engine = 'xelatex'
+" }}}
 
 
-" easy motion
+" {{{ easy motion
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
@@ -184,9 +188,10 @@ let g:EasyMotion_smartcase = 1
 " JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
+" }}}
 
 
-" 自动运行程序
+" {{{ 自动运行程序
 " nnoremap <silent> <c-G> :call CompileRunGcc()<CR>
 func! CompileRunGcc()
    exec "w"
@@ -216,8 +221,10 @@ func! CompileRunGcc()
 	  exec "!firefox %.html &"
    endif
 endfunc
+" }}}
 
 
+" {{{ 颜色设置
 function DarkMode()
     " colorscheme solarized8_high
     set background=dark
@@ -230,7 +237,6 @@ function LightMode()
     " let g:lightline = { 'colorscheme': 'PaperColor' }
 endfunction
 
-" 颜色设置
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
 "(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
@@ -246,9 +252,10 @@ if (empty($TMUX))
     set termguicolors
   endif
 endif
+" }}}
 
 
-" minimap
+" {{{ minimap
 " let g:minimap_width = 10
 " let g:minimap_auto_start = 1
 " let g:minimap_auto_start_win_enter = 1
@@ -259,16 +266,18 @@ endif
 " autocmd ColorScheme *
 "         \ highlight minimapCursor            ctermbg=59  ctermfg=228 guibg=#5F5F5F guifg=#FFFF87 |
 "         \ highlight minimapRange             ctermbg=242 ctermfg=228 guibg=#4F4F4F guifg=#FFFF87
+" }}}
 
 
-" vim-gutentags
+" {{{ vim-gutentags
 " Don't load me if there's no ctags file
 if !executable('ctags')
     let g:gutentags_dont_load = 1
 endif
+" }}}
 
 
-" terminal mode key map
+" {{{ terminal mode key map
 tnoremap <leader><Esc> <C-\><C-n>
 nnoremap <silent> <leader>t :call OpenPwshInSplitView()<CR>
 
@@ -297,4 +306,27 @@ function OpenPwshInSplitView()
    endif
 
 endfunction
+" }}}
+
+
+" {{{ Other Setting
+let g:airline_section_y = ''
+
+" 删除不复制
+nnoremap <leader>d "_d
+xnoremap <leader>d "_d
+xnoremap <leader>p "_dP
+
+let b:ale_linters = {'fortran': ['language_server']}
+
+" python
+let g:python_highlight_all = 1
+
+" Return to last edit position when opening files (You want this!)
+autocmd BufReadPost *
+		 \ if line("'\"") > 0 && line("'\"") <= line("$") |
+		 \   exe "normal! g`\"" |
+		 \ endif
+
+" }}}
 
