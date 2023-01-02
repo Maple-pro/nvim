@@ -25,6 +25,7 @@
 
   ```
   v
+  <C-V> - visual block mode
   ```
 
 ### 1.4 history
@@ -223,4 +224,9 @@
   <leader>t - open a terminal
   <leader><ESC> - exit terminal insert mode
   ```
+## 17.4 CHADTree
 
+  ```
+  <C-V> - open CHADTree
+  <C-R> - refresh CHADTree
+  ```
