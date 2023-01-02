@@ -48,6 +48,7 @@ command format: `[count][operator][motion]`
   ------
   ; - repeat f/F command
   , - repeat F/f command reversely
+  & - repeat substitute action
   ```
 
 ## 2 navigation
@@ -149,6 +150,10 @@ command format: `[count][operator][motion]`
   :%s/old/new/g - with a prompt whether to substitute or not
   :.,+2s/old/new/g - current line and next two line
   ------
+  g flag - globally within the current line
+  c flag - eyeball each substitution
+  % - execute every line of the file
+  ------
   :[range]g/pattern/command - search and execute command
   :%g/^xyz/nomarl dd - delete the line which starts with xyz
   ```
@@ -204,7 +209,7 @@ command format: `[count][operator][motion]`
 ## 15 tab
 
   ```
-  gt/gT - go to next tab
+  [number]gt/gT - go to next tab
   tabnew - create a new tab
   ```
 
