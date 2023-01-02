@@ -230,3 +230,17 @@
   <C-V> - open CHADTree
   <C-R> - refresh CHADTree
   ```
+
+## 17.5 vim-surround
+
+  ```
+  add to word - ysiw)
+  change to word - cs'""
+  delete to word - ds)
+  ```
+
+## 17.6 easy motion
+
+  ```
+  s{char}{char}<CR>
+  ```
