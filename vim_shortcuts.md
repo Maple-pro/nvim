@@ -1,5 +1,7 @@
 # Vim Shortcuts
 
+command format: `[count][operator][motion]`
+
 ## 1 Mode
 
 ### 1.1 normal -> insert
@@ -26,6 +28,9 @@
   ```
   v
   <C-V> - visual block mode
+  <S-V> - visual line mode
+  ------
+  :'<,'>normal . - after we enter visual line mode, we can execute command on the selected lines
   ```
 
 ### 1.4 history
@@ -34,6 +39,15 @@
   q: - history command
   q? - history search with ?
   q/ - history search with /
+  ```
+
+### 1.5 dot command
+
+  ```
+  [count]. - repeat last change
+  ------
+  ; - repeat f/F command
+  , - repeat F/f command reversely
   ```
 
 ## 2 navigation
@@ -164,6 +178,7 @@
   ```
   << - indent to the left
   >> - indent to the right
+  >G - increase the indentation from the current line until the end of the file
   ```
 
 ## 13 window
