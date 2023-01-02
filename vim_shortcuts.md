@@ -171,6 +171,9 @@
   ```
   <c-w>h/j/k/l - go to other window
   sp / vsp - create a split view
+  <c-w>r - rotate window
+  <c-w>T - move window to new tab
+  <c-w>H/J/K/L - move window
   ```
 
 ## 14 quickfix
