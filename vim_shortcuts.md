@@ -87,7 +87,8 @@ command format: `[count][operator][motion]`
   ```
   w - until the start of the next word.
   b - until the start of the previous word.
-  e - to the end of the current word.
+  e - to the end of the next word.
+  ge - to the end of the previous word
   ^ - to the beginning of the line.
   $ - to the end of the line.
   0 - to the start of the line.
@@ -265,5 +266,18 @@ command format: `[count][operator][motion]`
 ## 17.6 easy motion
 
   ```
-  s{char}{char}<CR>
+  <leader><leader>w - 跳转到下文中的单词开头
+  <leader><leader>b - 跳转到上文中的单词开头
+  <leader><leader>e - 跳转到下文中的单词结尾
+  <leader><leader>ge - 跳转到上文中的单词结尾
+  <leader><leader>h
+  <leader><leader>j
+  <leader><leader>k
+  <leader><leader>l
+
+  <leader><leader>s - 根据关键词搜索上下文
+  <leader><leader>f - 根据关键词搜索下文
+  <leader><leader>F - 根据关键词搜索上文
+
+  <leader><leader>. - 重复上一次动作
   ```
